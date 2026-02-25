@@ -13,7 +13,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void addEmployee(Employee employee) {
 
         try(Connection con = DBConnection.getConnection()){
-
             String sql =
                     "INSERT INTO employee(name,salary,department) VALUES (?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -21,12 +20,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ps.setString(1, employee.getName());
             ps.setDouble(2, employee.getSalary());
             ps.setString(3, employee.getDepartment());
-
             ps.executeUpdate();
-
             System.out.println("Employee added successfully");
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -101,4 +96,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
 }
